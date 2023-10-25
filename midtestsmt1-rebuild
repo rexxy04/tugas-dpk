@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+
+    int totalsurat;
+
+    printf("Anda butuh pengiriman surat kilat? Silahkan Isi form dibawah ini\n");
+    scanf("%d", &totalsurat);
+    fflush(stdin);
+
+    float admin[totalsurat],biaya_per_gram[totalsurat], biaya_tambahan_20_gram[totalsurat], biaya_tambahan_40_gram[totalsurat], biaya[totalsurat];
+    int berat_minimal[totalsurat], berat[totalsurat];
+
+    char pengirim [totalsurat][100];
+    char kota_tujuan [totalsurat][100];
+
+    for (int i = 0; i < totalsurat; i++){
+        printf("Data surat ke-%d: \n", i+1);
+
+        printf("Masukkan nama pengirim: ");
+        scanf(" %[^\n]", &pengirim[i]);
+        fflush(stdin);
+        
+        printf("Masukkan kota tujuan: ");
+        scanf(" %[^\n]", &kota_tujuan[i]);
+        
+        printf("Masukkan berat surat (gram): ");
+        scanf("%f", &berat[i]);
+
+        admin[i] = 100;
+        biaya_per_gram[i]= 500;
+        berat_minimal[i]=2;
+        biaya_tambahan_20_gram[i]= 50;
+        biaya_tambahan_40_gram[i] =100;
+        berat[i];
+
+        if (berat[i] < berat_minimal[i]) {
+            biaya[i] = admin[i] + (berat_minimal[i] * biaya_per_gram[i]);
+        } else if (berat[i] <= 20) {
+            biaya[i] = admin[i] + (berat[i] * biaya_per_gram[i]);
+        } else if (berat[i] <= 40) {
+            biaya[i] = admin[i] + (20 * biaya_per_gram[i]) + ((berat[i] - 20) * biaya_tambahan_20_gram[i]);
+        } else {
+            biaya[i] = admin[i] + (20 * biaya_per_gram[i]) + (20 * biaya_tambahan_20_gram[i]) + ((berat[i] - 40) * biaya_tambahan_40_gram[i]);
+        }
+    }
+
+    printf("\nDaftar Surat Terakhir\n");
+    printf("|%-30s | %-30s | %-6s | %-6s |\n", "Nama Pengirim", "Kota Tujuan", "Berat surat", "Biaya");
+    for (int i = 0; i < totalsurat; i++) {
+        printf("|%-30s | %-30s | %-6.2f | %-6.2f | %-6.2f | Rp.%-6.2f|\n"), pengirim[i], kota_tujuan[i], berat[i], biaya[i];
+    }
+
+    return 0;
+}
+

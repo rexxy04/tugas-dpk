@@ -17,8 +17,7 @@ int main(){
 
     cekusn = strcmp(usn, guestuser);
     cekpw = strcmp(pwd, guestpw);
-
-    do{
+    
     if (cekusn < cekpw)
     {
         printf("Username salah!");
@@ -32,8 +31,5 @@ int main(){
         printf("Parameter error");
     }
 
-    }
-    while (guestuser != '\0');
-    
 return 0; 
 }

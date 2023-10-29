@@ -5,28 +5,24 @@ int main(){
     const char usn[] = {"Admin"};
     const char pwd[] = {"User"};
 
-    char guestuser[100];
-    char guestpw[100];
+    char useri[100];
+    char pwi[100];
     int cekusn;
     int cekpw;
 
     printf("Username: ");
-    fgets(guestuser, sizeof guestuser, stdin);
+    fgets(useri, sizeof useri, stdin);
     printf("Password: ");
-    scanf(guestpw, sizeof guestpw, stdin);
+    scanf(pwi, sizeof pwi, stdin);
+    strtok(useri, "\n");
+    strtok(pwi, "\n");
 
-    cekusn = strcmp(usn, guestuser);
-    cekpw = strcmp(pwd, guestpw);
-    
-    if (cekusn < cekpw)
+    if (strcmp(usn, useri) && strcmp(pwd, pwi) == 0)
     {
-        printf("Username salah!");
-    }else if (cekusn > cekpw)
+        printf("Selamat datang %s", useri);
+    }else if (strcmp (usn, useri) && strcmp(pwd, pwi) < 0)
     {
-        printf("Password Salah!");
-    }else if (cekusn == cekpw)
-    {
-        printf("Selamat datang %s", guestuser);
+        printf("Pw Salah!");
     }else{
         printf("Parameter error");
     }
